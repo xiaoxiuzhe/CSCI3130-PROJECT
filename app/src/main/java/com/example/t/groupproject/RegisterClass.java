@@ -12,4 +12,9 @@ public class RegisterClass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_class);
     }
+
+
+    public void logutButton(View view) {
+        startActivity(new Intent(RegisterClass.this, Login.class));
+    }
 }
