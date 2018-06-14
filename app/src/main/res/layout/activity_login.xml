@@ -7,15 +7,15 @@
     tools:context=".Login">
 
     <EditText
-        android:id="@+id/userNameField"
+        android:id="@+id/EmailField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="124dp"
         android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameField" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailField" />
 
     <Button
         android:id="@+id/loginButton"
@@ -44,14 +44,13 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="56dp"
         android:text="Login"
-        android:onClick="loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordField" />
 
     <TextView
-        android:id="@+id/signUp"
+        android:id="@+id/textViewSignUp"
         android:layout_width="271dp"
         android:layout_height="26dp"
         android:layout_marginBottom="8dp"
@@ -61,7 +60,6 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:onClick="signUpButton"
         android:text="Does not have an account? Sign up here"
         android:textColor="@android:color/holo_blue_dark"
         android:textColorLink="@color/colorPrimary"
