@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -15,61 +17,35 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class RegisterClass extends AppCompatActivity {
-    private DatabaseReference database;
-    private TextView courseView;
-    private HashMap<String, Section> sectionList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_class);
 
-        // Write a message to the database
-        database = FirebaseDatabase.getInstance().getReference().child("Computer_Science");
-        courseView = (TextView) findViewById(R.id.courseView);
 
-
-        // retrieve data from Database, then show them on textView
-        database.addValueEventListener(new ValueEventListener() {
-
-            // 'onDataChange' method reloads data while changes happened in database
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                int sectionId, courseId;
-                String courseName, location, classlink;
-                String result = "";
-
-                for (DataSnapshot course : dataSnapshot.getChildren()) {
-                    courseName = course.getKey();
-                    for (DataSnapshot section : course.getChildren()) {
-                        if (section.getKey().equals("classlink")) {
-                            classlink = section.getValue().toString();
-                        } else {
-                            sectionId = Integer.parseInt(section.getKey());
-                            courseId = Integer.parseInt(section.child("crn").getValue().toString());
-                            location = section.child("location").getValue().toString();
-
-                            result = result + courseName + " - " + location + "- courseID:" + courseId + " - sectionID:" + sectionId + "\n";
-                        }
-                    }
-                }
-
-                //display result on NameView
-                courseView.setText(result);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        //Dropdown list for term selection
+        //https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
+        Spinner termSelect = findViewById(R.id.termSpinner);
+        Spinner programSelect = findViewById(R.id.programSelect);
+        String[] term = new String[]{"2017-2018 Summer", "2018-2019 Fall"};
+        String[] program = new String[]{"Science", "Music", "Computer Science"};
+        ArrayAdapter<String> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, term);
+        ArrayAdapter<String> programAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, program);
+        termSelect.setAdapter(termAdapter);
+        programSelect.setAdapter(programAdapter);
     }
 
 
-    public void logutButton(View view) {
+    public void logoutButton(View view) {
         startActivity(new Intent(RegisterClass.this, Login.class));
     }
+
+    public void submitButton(View view) {
+        startActivity(new Intent(RegisterClass.this, CourseLists.class));
+    }
+
 
 
 }
