@@ -32,8 +32,6 @@ public class SignUpEspressoTest {
 
     @Test
     public void CheckEmailAlreadyExit() throws InterruptedException {
-        //  onView(withId(R.id.EmailField)).perform(click());
-        //  onView(withId(R.id.EmailField)).perform(typeText("test@test.com"));
         onView(withId(R.id.passwordField)).perform(click());
         onView(withId(R.id.passwordField)).perform(typeText("123456"));
         Espresso.closeSoftKeyboard();
@@ -43,7 +41,6 @@ public class SignUpEspressoTest {
         onView(withText("Please enter email"))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
-        //onView(withText(R.string.toast)).inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
 
