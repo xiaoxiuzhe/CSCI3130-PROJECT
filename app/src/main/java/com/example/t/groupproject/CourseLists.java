@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -41,11 +42,11 @@ public class CourseLists extends AppCompatActivity {
                 String courseName, courseLink = "";
                 String courseId, currentSeat, availableSeat, maxSeat, waitList;
                 String sectionCode, sectionType, location, times;
-                ArrayList<Section> sections = new ArrayList<>();
                 String result = "";
 
                 for (DataSnapshot course : dataSnapshot.getChildren()) {
                     courseName = course.getKey();
+                    ArrayList<Section> sections = new ArrayList<>();
 
                     for (DataSnapshot section : course.getChildren()) {
                         if (section.getKey().equals("classlink")) {
@@ -91,9 +92,20 @@ public class CourseLists extends AppCompatActivity {
 
     public void displayCourseList() {
         LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
+
         for (Course course : courseList) {
             TextView text = new TextView(CourseLists.this);
-            text.setText(course.getCourseName());
+            String courseDetail = "";
+            for (int i = 0; i < course.getSections().size(); i++) {
+
+                courseDetail += "\n\t\t\t" + course.getSections().get(i).getSectionCode() + "\t" +
+                        course.getSections().get(i).getCourseId() + "\t" +
+                        course.getSections().get(i).getTimes();
+            }
+
+            text.setText(course.getCourseName() + courseDetail+"\n");
+
+
             courseListLayout.addView(text);
         }
     }
