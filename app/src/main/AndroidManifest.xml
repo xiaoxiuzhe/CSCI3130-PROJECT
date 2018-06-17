@@ -21,6 +21,7 @@
         <activity android:name=".RegisterClass" />
         <activity android:name=".SignUp"></activity>
         <activity android:name=".Home"></activity>
+        <activity android:name=".CourseLists" />
     </application>
 
 </manifest>
