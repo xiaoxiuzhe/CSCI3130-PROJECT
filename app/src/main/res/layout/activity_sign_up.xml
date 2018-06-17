@@ -63,11 +63,11 @@
         android:layout_height="47dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="128dp"
+        android:autoSizeTextType="uniform"
         android:gravity="top|bottom|left|right"
         android:includeFontPadding="false"
         android:text="Email:"
         android:textStyle="bold|italic"
-        android:autoSizeTextType="uniform"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

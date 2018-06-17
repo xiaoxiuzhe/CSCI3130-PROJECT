@@ -57,8 +57,7 @@ public class CourseLists extends AppCompatActivity {
                             availableSeat = section.child("avail").getValue().toString();
                             maxSeat = section.child("max").getValue().toString();
                             waitList = section.child("wtlist").getValue().toString();
-
-
+                            
                             location = section.child("location").getValue().toString();
                             sectionType = section.child("section_type").getValue().toString();
                             sectionCode = section.child("section_code").getValue().toString();
