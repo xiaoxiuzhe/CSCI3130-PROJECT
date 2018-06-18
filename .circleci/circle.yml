@@ -22,9 +22,10 @@ jobs:
       TERM: dumb
 
     steps:
+      pre:
+        - chmod +x gradlew
       - checkout
-      - chmod +x gradlew
-      
+
       # Download and cache dependencies
       - restore_cache:
           keys:
