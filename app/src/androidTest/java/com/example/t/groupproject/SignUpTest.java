@@ -41,7 +41,7 @@ public class SignUpTest {
         onView(withId(R.id.passwordField)).perform(clearText());
         onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         onView(withText("Please enter password"))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
