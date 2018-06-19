@@ -25,6 +25,10 @@
         {
           "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -69,6 +73,10 @@
         {
           "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -109,6 +117,10 @@
             "package_name": "io.junguo.firebase",
             "certificate_hash": "0ed6087fbc85ca77d99f0f20c88d55ac18fda52e"
           }
+        },
+        {
+          "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "608014099410-i54liblp94lk7et893vncr1b5lo732h2.apps.googleusercontent.com",
