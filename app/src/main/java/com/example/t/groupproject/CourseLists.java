@@ -34,11 +34,9 @@ public class CourseLists extends AppCompatActivity {
 
         // retrieve data from Database, then show them on textView
         database.addValueEventListener(new ValueEventListener() {
-
             // 'onDataChange' method reloads data while changes happened in database
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 String courseName, courseLink = "";
                 String courseId, currentSeat, availableSeat, maxSeat, waitList;
                 String sectionCode, sectionType, location, times, professorLink, tutCode, professorName;
