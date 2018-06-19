@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SectionTest {
-    private String sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList;
+    private String sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName;
     Section demo;
     @Before
     public void setUp(){
@@ -19,7 +19,10 @@ public class SectionTest {
         availableSeat="31";
         maxSeat="100";
         waitList="20";
-        demo=new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList);
+        professorLink="tst";
+        tutCode="s";
+        professorName="name";
+        demo=new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink,tutCode,professorName);
     }
     @Test
     public void getSectionCode() {

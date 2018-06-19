@@ -14,8 +14,8 @@ public class CourseTest {
     public void setUp(){
         courseName="1";
         courseLink="1";
-        Section s1=new Section("1","1","1","1","1","1","1","1","1");
-        Section s2=new Section("2","2","2","2","2","1","2","2","2");
+        Section s1=new Section("1","1","1","1","1","1","1","1","1","1", "1", "1");
+        Section s2=new Section("2","2","2","2","2","1","2","2","2","2", "2","2");
         sections.add(s1);
         sections.add(s2);
         demo=new Course(courseName, courseLink, sections);
@@ -53,7 +53,7 @@ public class CourseTest {
 
     @Test
     public void setSections() {
-        Section s3=new Section("n","n","n","n","n","n","n","n","n");
+        Section s3=new Section("n","n","n","n","n","n","n","n","n","n","n","n");
         sections.add(s3);
         demo.setSections(sections);
         assertEquals(demo.getSections(), sections);
