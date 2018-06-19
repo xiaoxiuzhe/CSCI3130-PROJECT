@@ -100,11 +100,11 @@ public class CourseLists extends AppCompatActivity {
             int tutFee = 0;
             for (int i = 0; i < course.getSections().size(); i++) {
                 tutFee = 0;
-                if(course.getSections().get(i).getTutCode() == "T210")
+                if(course.getSections().get(i).getTutCode().equals("T210") )
                     tutFee = 500;
-                    if(course.getSections().get(i).getTutCode() == "T410")
+                    if(course.getSections().get(i).getTutCode().equals("T410"))
                         tutFee = 600;
-                        if(course.getSections().get(i).getTutCode() == "T610")
+                        if(course.getSections().get(i).getTutCode().equals("T610"))
                             tutFee = 700;
 
 
