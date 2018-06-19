@@ -10,8 +10,13 @@ public class Section {
     private String availableSeat;
     private String maxSeat;
     private String waitList;
+    private String professorLink;
+    private String tutCode;
+    private String professorName;
 
-    public Section(String sectionCode, String sectionType, String courseId, String location, String times, String currentSeat, String availableSeat, String maxSeat, String waitList) {
+
+
+    public Section(String sectionCode, String sectionType, String courseId, String location, String times, String currentSeat, String availableSeat, String maxSeat, String waitList, String professorLink, String tutCode, String professorName) {
         this.sectionCode = sectionCode;
         this.sectionType = sectionType;
         this.courseId = courseId;
@@ -21,6 +26,10 @@ public class Section {
         this.availableSeat = availableSeat;
         this.maxSeat = maxSeat;
         this.waitList = waitList;
+        this.professorLink = professorLink;
+        this.tutCode = tutCode;
+        this.professorName = professorName;
+
     }
 
     public String getSectionCode() {
@@ -93,5 +102,17 @@ public class Section {
 
     public void setWaitList(String waitList) {
         this.waitList = waitList;
+    }
+
+    public String getProfLink() {
+        return professorLink;
+    }
+
+    public String getTutCode() {
+        return tutCode;
+    }
+
+    public String getProfessorName() {
+        return professorName;
     }
 }
