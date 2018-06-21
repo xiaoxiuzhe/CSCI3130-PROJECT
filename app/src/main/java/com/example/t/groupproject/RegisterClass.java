@@ -48,10 +48,6 @@ public class RegisterClass extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
-    public void logoutButton(View view) {
-        startActivity(new Intent(RegisterClass.this, Login.class));
-    }
-
     public void submitButton(View view) {
         // passing faculty to courselists class
         Intent intent = new Intent(RegisterClass.this, CourseLists.class);
