@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity implements View.OnClickListener, OnCompleteListener {
+public class Login extends AppCompatActivity implements View.OnClickListener, OnCompleteListener<AuthResult> {
 
     private FirebaseAuth mAuth;
     private EditText EmailField, passwordField;
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, On
         String password = passwordField.getText().toString().trim();
 
         if (isValidatedLogin(email, password)) {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this);
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, this);
         }
     }
 
