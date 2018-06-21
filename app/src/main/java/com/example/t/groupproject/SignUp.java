@@ -43,6 +43,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         String email = EmailField.getText().toString().trim();
         String password = passwordField.getText().toString().trim();
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
+        String emailRegex = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
@@ -54,7 +55,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
 
         // after password validation, add user to the firebase
-        if( password.matches(passwordRegex)) {
+        if( password.matches(passwordRegex) && email.matches(emailRegex)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -72,9 +73,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         }
                     });
         }
-        else{
+        else if(!email.matches(emailRegex)){
+            Toast.makeText(SignUp.this, "Wrong email address", Toast.LENGTH_LONG).show();
+        }
+        else if(!password.matches(passwordRegex)){
             Toast.makeText(SignUp.this, "Password should has 8 digits long, at least 1 uppcase and 1 lower case.", Toast.LENGTH_LONG).show();
         }
+
 
 
     }
