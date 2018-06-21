@@ -32,16 +32,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="174dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:autoSizeTextType="uniform"
-        android:gravity="top|bottom|left|right"
-        android:text="Course List"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>
