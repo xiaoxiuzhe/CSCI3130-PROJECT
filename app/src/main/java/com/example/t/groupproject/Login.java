@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
+public class Login extends AppCompatActivity implements View.OnClickListener, OnCompleteListener {
 
     private FirebaseAuth mAuth;
     private EditText EmailField, passwordField;
@@ -24,62 +24,79 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private Button loginButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // initialize variables
         mAuth = FirebaseAuth.getInstance();
-
-        if(mAuth.getCurrentUser() != null){
-            //user is logged in, go to home
-            finish();
-            startActivity(new Intent(getApplicationContext(), Home.class));
-        }
 
         EmailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
         textViewSignUp = (TextView) findViewById(R.id.textViewSignUp);
         loginButton = (Button) findViewById(R.id.loginButton);
 
+        // initialize button click listeners
         loginButton.setOnClickListener(this);
         textViewSignUp.setOnClickListener(this);
+
+
+        // jump to Home if user has already login
+        if (mAuth.getCurrentUser() != null) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Home.class));
+        }
+
     }
 
-    private void userLogIn(){
+    // handle all the clicks
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loginButton:
+                userLogIn();
+                break;
+            case R.id.textViewSignUp:
+                startActivity(new Intent(this, SignUp.class));
+                break;
+        }
+    }
+
+
+    private void userLogIn() {
         String email = EmailField.getText().toString().trim();
         String password = passwordField.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this, "Pleas enter email", Toast.LENGTH_SHORT).show();
-            return;
+        if (isValidatedLogin(email, password)) {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this);
         }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Pleas enter password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), Home.class));
-                        }
-                        else{
-                            Toast.makeText(Login.this, "Could not login, incorrect credential", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
+    // once login complete or not
     @Override
-    public void onClick(View v) {
-        if(v == loginButton){
-            userLogIn();
-        }
-        if(v == textViewSignUp){
-            startActivity(new Intent(this, SignUp.class));
+    public void onComplete(@NonNull Task task) {
+        if (task.isSuccessful()) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Home.class));
+        } else {
+            Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    // validator for emal and password
+    private boolean isValidatedLogin(String email, String password) {
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Pleas enter email", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Pleas enter password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+
 }

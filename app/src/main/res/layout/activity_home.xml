@@ -10,7 +10,6 @@
         android:id="@+id/courseTableButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
-        android:onClick="courseTableButton"
         android:text="Course Table"
         app:layout_constraintEnd_toEndOf="@+id/tuitionButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,8 +30,8 @@
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
         android:text="My Class"
-        app:layout_constraintEnd_toEndOf="@+id/LogOutButton"
-        app:layout_constraintStart_toStartOf="@+id/LogOutButton"
+        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
+        app:layout_constraintStart_toStartOf="@+id/logOutButton"
         app:layout_constraintTop_toBottomOf="@+id/scheduleButton" />
 
     <Button
@@ -45,10 +44,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tuitionButton" />
 
     <Button
-        android:id="@+id/LogOutButton"
+        android:id="@+id/logOutButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
-        android:text="Logout"
+        android:text="Log out"
         android:textColor="@android:color/holo_red_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

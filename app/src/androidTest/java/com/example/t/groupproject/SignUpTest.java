@@ -63,7 +63,7 @@ public class SignUpTest {
         onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
-        onView(withText("Could not register.. please try again"))
+        onView(withText("Wrong email address"))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
     }
@@ -74,7 +74,7 @@ public class SignUpTest {
         onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111s111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
-        onView(withText("Could not register.. please try again"))
+        onView(withText("Password should has 8 digits long, at least 1 uppcase and 1 lower case."))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
     }
@@ -85,7 +85,7 @@ public class SignUpTest {
         onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
-        onView(withText("Could not register.. please try again"))
+        onView(withText("Password should has 8 digits long, at least 1 uppcase and 1 lower case."))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .perform(click());
 
