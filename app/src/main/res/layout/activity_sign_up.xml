@@ -7,7 +7,7 @@
     tools:context=".SignUp">
 
     <EditText
-        android:id="@+id/EmailField"
+        android:id="@+id/emailField"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="@+id/registerButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintTop_toBottomOf="@+id/EmailField" />
+        app:layout_constraintTop_toBottomOf="@+id/emailField" />
 
     <Button
         android:id="@+id/registerButton"

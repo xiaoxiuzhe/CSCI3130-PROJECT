@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             startActivity(new Intent(getApplicationContext(), Home.class));
         }
 
-        EmailField = (EditText) findViewById(R.id.EmailField);
+        EmailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
         textViewSignUp = (TextView) findViewById(R.id.textViewSignUp);
         loginButton = (Button) findViewById(R.id.loginButton);

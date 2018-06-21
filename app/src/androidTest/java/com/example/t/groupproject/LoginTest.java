@@ -3,7 +3,6 @@ package com.example.t.groupproject;
 import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -30,7 +29,7 @@ public class LoginTest {
    //@Test
     public void randomUNOnly()throws InterruptedException{
         //random username only
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("abcd@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("abcd@gmail.com"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         onView(withId(R.id.loginButton)).check(matches(isDisplayed()));
     }
@@ -38,7 +37,7 @@ public class LoginTest {
     //@Test
     public void registeredUNOnly(){
         //registered username only
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@gmail.com"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         onView(withText("Pleas enter password"))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
@@ -48,7 +47,7 @@ public class LoginTest {
     //@Test
     public void pwdOnly() throws InterruptedException {
         //pwd only
-        onView(withId(R.id.EmailField)).perform(clearText());
+        onView(withId(R.id.emailField)).perform(clearText());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("asdfasdf"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);
@@ -60,7 +59,7 @@ public class LoginTest {
    // @Test
     public void rdmUNNpwd(){
         //random username & pwd
-        onView(withId(R.id.EmailField)).perform(clearText(),typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(),typeText("123456"), closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(),typeText("ssegggh"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         //Espresso.onView(withId(R.id.textViewSignUp)).check(matches(withText("Does not have an account? Sign up here")));
@@ -72,7 +71,7 @@ public class LoginTest {
     //@Test
     public void registeredUNIvldPwd(){
         //registered username & wrong pwd
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("yiditheawe1@gmail.com"), closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("yiditheawe1@gmail.com"), closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("123457"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         onView(withText("Could not login, incorrect credential"))
@@ -92,7 +91,7 @@ public class LoginTest {
    // @Test
     public void registeredUNPwd() throws InterruptedException {
         //? registered username & correct pwd      (toast returns "" )
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("xiaoxiuzhe@163.com"), closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("xiaoxiuzhe@163.com"), closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("123456"), closeSoftKeyboard());
         Espresso.onView(withId(R.id.loginButton)).perform(click());
         Thread.sleep(2000);

@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +30,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
 
-        EmailField = (EditText) findViewById(R.id.EmailField);
+        EmailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
         textViewLogin = (TextView) findViewById(R.id.textViewLogin);
         registerButton = (Button) findViewById(R.id.registerButton);
@@ -40,43 +39,55 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         textViewLogin.setOnClickListener(this);
     }
 
-    private void registerUser(){
+    private void registerUser() {
         String email = EmailField.getText().toString().trim();
         String password = passwordField.getText().toString().trim();
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
 
-        if(TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            if(mAuth.getCurrentUser() != null){
-                                //user is logged in, go to home
-                                finish();
-                                startActivity(new Intent(getApplicationContext(), Home.class));
-                            }                        }
-                        else {
-                            Toast.makeText(SignUp.this, "Could not register.. please try again", Toast.LENGTH_SHORT).show();
+        // after password validation, add user to the firebase
+        if( password.matches(passwordRegex)) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                if (mAuth.getCurrentUser() != null) {
+                                    //user is logged in, go to home
+                                    startActivity(new Intent(getApplicationContext(), Home.class));
+                                    Toast.makeText(SignUp.this, "Register successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            } else {
+                                Toast.makeText(SignUp.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
+        else{
+            Toast.makeText(SignUp.this, "Password should has 8 digits long, at least 1 uppcase and 1 lower case.", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     @Override
     public void onClick(View v) {
-        if(v == registerButton){
-            registerUser();
-        }
-        if(v == textViewLogin){
-            startActivity(new Intent(this, Login.class));
+        switch (v.getId()) {
+            case R.id.registerButton:
+                registerUser();
+                break;
+            case R.id.textViewLogin:
+                startActivity(new Intent(this, Login.class));
+                finish();
         }
     }
 }

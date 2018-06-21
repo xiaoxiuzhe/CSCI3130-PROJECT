@@ -9,22 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class RegisterClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner termSelect;
     private Spinner programSelect;
     private Button submitButton;
+    private String term;
     private String faculty;
 
     @Override
@@ -37,17 +27,19 @@ public class RegisterClass extends AppCompatActivity implements AdapterView.OnIt
         //Dropdown list for term selection
         //https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
         termSelect = findViewById(R.id.termSpinner);
-        programSelect = findViewById(R.id.programSelect);
+        programSelect = findViewById(R.id.programSpinner);
 
         // make spinner selectable and save its data
+        termSelect.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         programSelect.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
 
         String[] term = new String[]{"2017-2018 Summer", "2018-2019 Fall"};
-//        String[] program = new String[]{"Science", "Music", "Computer Science"};
         String[] program = new String[]{"Computer Science", "Chinese", "Statistics"};
+
         ArrayAdapter<String> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, term);
         ArrayAdapter<String> programAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, program);
         programAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         termSelect.setAdapter(termAdapter);
         programSelect.setAdapter(programAdapter);
@@ -81,11 +73,29 @@ public class RegisterClass extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        faculty = parent.getSelectedItem().toString();
+        switch(parent.getId()){
+            case R.id.termSpinner:
+                term = parent.getSelectedItem().toString();
+                Log.w("RegisterClass", term);
+                break;
+            case R.id.programSpinner:
+                faculty = parent.getSelectedItem().toString();
+                Log.w("RegisterClass", faculty);
+                break;
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        faculty = "Computer_Science";
+        switch(parent.getId()){
+            case R.id.termSpinner:
+                 term = "2017_2018_Summer";
+                Log.w("RegisterClass", term);
+                break;
+            case R.id.programSpinner:
+                faculty = "Computer_Science";
+                Log.w("RegisterClass", faculty);
+                break;
+        }
     }
 }

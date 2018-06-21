@@ -39,7 +39,7 @@ public class SignUpTest {
     public void emailOnly()throws InterruptedException{
         //email only
         onView(withId(R.id.passwordField)).perform(clearText());
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         Thread.sleep(300);
         onView(withText("Please enter password"))
@@ -50,7 +50,7 @@ public class SignUpTest {
     @Test
     public void invalidEmail()throws InterruptedException{
         //invalid email format
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis.com"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         onView(withText("Please enter password"))
                 .inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
@@ -60,7 +60,7 @@ public class SignUpTest {
     @Test
     public void invalidEmailNPwd()throws InterruptedException{
         //invalid email with pwd
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         onView(withText("Could not register.. please try again"))
@@ -71,7 +71,7 @@ public class SignUpTest {
     @Test
     public void registeredEmailWrongPwd()throws InterruptedException{
         //registered email with wrong pwd
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111s111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         onView(withText("Could not register.. please try again"))
@@ -82,7 +82,7 @@ public class SignUpTest {
     @Test
     public void registeredEmail()throws InterruptedException{
         //registered email with pwd
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         onView(withText("Could not register.. please try again"))
@@ -94,7 +94,7 @@ public class SignUpTest {
     @Test
     public void correctInfo(){
         //?valid new email & pwd registration
-        onView(withId(R.id.EmailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailField)).perform(clearText(), typeText("jianxiahonglewis@163.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordField)).perform(clearText(), typeText("111111"), ViewActions.closeSoftKeyboard());
         Espresso.onView(withId(R.id.registerButton)).perform(click());
         mActivityRule.finishActivity();
