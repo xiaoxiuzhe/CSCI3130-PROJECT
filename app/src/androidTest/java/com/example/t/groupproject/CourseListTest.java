@@ -12,14 +12,5 @@ public class CourseListTest {
     public ActivityTestRule<CourseLists> mActivityRule = new ActivityTestRule<>(CourseLists.class, true, false);
 
 
-    @Test
-    public void CheckHeaderExist()  {
-        onView(withId(R.id.textView9));
-    }
-
-    @Test
-    public void CheckCourseListExist(){
-        onView(withId(R.id.courseListLayout));
-    }
 
 }
