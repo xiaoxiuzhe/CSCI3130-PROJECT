@@ -25,12 +25,19 @@
         <activity
             android:name=".SignUp"
             android:label="Sign Up"
-            android:parentActivityName=".Login"></activity>
-        <activity android:name=".Home"></activity>
+            android:parentActivityName=".Login" />
+        <activity android:name=".Home" />
         <activity
             android:name=".CourseLists"
             android:label="Course List"
             android:parentActivityName=".RegisterClass" />
+        <activity android:name=".Tuition" />
+        <activity android:name=".Schedule" />
+        <activity android:name=".MyClass" />
+        <activity android:name=".UserInfo" />
+        <activity android:name=".AdminHome" />
+        <activity android:name=".UserMana" />
+        <activity android:name=".CourseMana"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@
         android:id="@+id/tuitionButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="Tuition"
         app:layout_constraintEnd_toEndOf="@+id/scheduleButton"
         app:layout_constraintStart_toStartOf="@+id/scheduleButton"
@@ -29,6 +30,7 @@
         android:id="@+id/myClassButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="My Class"
         app:layout_constraintEnd_toEndOf="@+id/logOutButton"
         app:layout_constraintStart_toStartOf="@+id/logOutButton"
@@ -38,10 +40,21 @@
         android:id="@+id/scheduleButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="Schedule"
         app:layout_constraintEnd_toEndOf="@+id/myClassButton"
         app:layout_constraintStart_toStartOf="@+id/myClassButton"
         app:layout_constraintTop_toBottomOf="@+id/tuitionButton" />
+
+    <Button
+        android:id="@+id/userInfoButton"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="24dp"
+        android:onClick="onClick"
+        android:text="User Information"
+        app:layout_constraintEnd_toEndOf="@+id/myClassButton"
+        app:layout_constraintStart_toStartOf="@+id/myClassButton"
+        app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
 
     <Button
         android:id="@+id/logOutButton"
@@ -51,7 +64,7 @@
         android:textColor="@android:color/holo_red_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
+        app:layout_constraintTop_toBottomOf="@+id/userInfoButton" />
 
     <TextView
         android:id="@+id/homeTitle"

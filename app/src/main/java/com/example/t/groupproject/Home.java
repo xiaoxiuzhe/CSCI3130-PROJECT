@@ -60,6 +60,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.courseTableButton:
                 startActivity(new Intent(Home.this, RegisterClass.class));
                 break;
+            case R.id.tuitionButton:
+                startActivity(new Intent(Home.this, Tuition.class));
+                break;
+            case R.id.scheduleButton:
+                startActivity(new Intent(Home.this, Schedule.class));
+                break;
+            case R.id.myClassButton:
+                startActivity(new Intent(Home.this, MyClass.class));
+                break;
+            case R.id.userInfoButton:
+                startActivity(new Intent(Home.this, UserInfo.class));
+                break;
+
         }
     }
 }
