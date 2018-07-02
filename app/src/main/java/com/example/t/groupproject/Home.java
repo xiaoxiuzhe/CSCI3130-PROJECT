@@ -16,7 +16,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private TextView homeTitle;
-    private Button logOutButton,courseTableButton;
+    private Button logOutButton,courseTableButton, infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +30,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         homeTitle = (TextView) findViewById(R.id.homeTitle);
         logOutButton = (Button) findViewById(R.id.logOutButton);
         courseTableButton = (Button) findViewById(R.id.courseTableButton);
+        infoButton = (Button) findViewById(R.id.infoButton);
 
         // initialize button listener
         logOutButton.setOnClickListener(this);
         courseTableButton.setOnClickListener(this);
+        infoButton.setOnClickListener(this);
 
 
 
@@ -59,6 +61,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.courseTableButton:
                 startActivity(new Intent(Home.this, RegisterClass.class));
+                break;
+            case R.id.infoButton:
+                startActivity(new Intent(Home.this, UserInfo.class));
                 break;
         }
     }

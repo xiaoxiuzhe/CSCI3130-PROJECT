@@ -11,6 +11,7 @@
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
         android:text="Course Table"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/tuitionButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tuitionButton"
@@ -21,17 +22,22 @@
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
         android:text="Tuition"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/scheduleButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/scheduleButton"
         app:layout_constraintTop_toBottomOf="@+id/courseTableButton" />
 
     <Button
         android:id="@+id/myClassButton"
         style="@style/ButtonStyle"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="24dp"
         android:text="My Class"
-        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
-        app:layout_constraintStart_toStartOf="@+id/logOutButton"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/infoButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/infoButton"
         app:layout_constraintTop_toBottomOf="@+id/scheduleButton" />
 
     <Button
@@ -39,29 +45,51 @@
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
         android:text="Schedule"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/myClassButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myClassButton"
         app:layout_constraintTop_toBottomOf="@+id/tuitionButton" />
 
     <Button
+        android:id="@+id/infoButton"
+        style="@style/ButtonStyle"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="28dp"
+        android:text="UserInfo"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logOutButton"
+        app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
+
+    <Button
         android:id="@+id/logOutButton"
         style="@style/ButtonStyle"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="Log out"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_red_light"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
+        app:layout_constraintTop_toBottomOf="@+id/infoButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/homeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="WelCome User"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/courseTableButton"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/courseTableButton"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
