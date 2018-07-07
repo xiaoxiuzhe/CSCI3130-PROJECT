@@ -11,12 +11,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private TextView homeTitle;
-    private Button logOutButton,courseTableButton, infoButton;
+    private Button logOutButton, courseTableButton, infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         infoButton.setOnClickListener(this);
 
 
-
         // initialize displayed text
-        if(user == null){
+        if (user == null) {
             finish();
             startActivity(new Intent(getApplicationContext(), Login.class));
         }
@@ -53,7 +52,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     // course listener for every click
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.logOutButton:
                 mAuth.signOut();
                 finish();
@@ -62,8 +61,20 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.courseTableButton:
                 startActivity(new Intent(Home.this, RegisterClass.class));
                 break;
+            case R.id.tuitionButton:
+                startActivity(new Intent(Home.this, Tuition.class));
+                break;
+            case R.id.scheduleButton:
+                startActivity(new Intent(Home.this, Schedule.class));
+                break;
+            case R.id.myClassButton:
+                startActivity(new Intent(Home.this, MyClass.class));
+                break;
             case R.id.infoButton:
                 startActivity(new Intent(Home.this, UserInfo.class));
+                break;
+            case R.id.addCourse:
+                startActivity(new Intent(Home.this, RegisterCourse.class));
                 break;
         }
     }
