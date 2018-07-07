@@ -36,6 +36,7 @@
         <activity android:name=".Tuition" />
         <activity android:name=".Schedule" />
         <activity android:name=".MyClass" />
+        <activity android:name=".RegisterCourse"></activity>
     </application>
 
 </manifest>
