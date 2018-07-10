@@ -1,5 +1,7 @@
 package com.example.t.groupproject;
 
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CourseLists extends AppCompatActivity implements ValueEventListener{
+public class CourseLists extends FragmentActivity implements ValueEventListener{
+    private static final String TAG = "CourseLists";
+
     private DatabaseReference database;
     private ArrayList<Course> courseList;
     private String faculty;
@@ -35,11 +39,17 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
 
         // retrieve data from Database, then show them on textView
         database.addValueEventListener(this);
+
+
+        if(savedInstanceState == null){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            RecycLerViewFrageMent
+        }
     }
 
 
     public void displayCourseList() {
-        LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
+//        LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
 
         for (Course course : courseList) {
             TextView text = new TextView(CourseLists.this);
@@ -68,7 +78,7 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
             text.setText(course.getCourseName() + courseDetail + "\n");
 
 
-            courseListLayout.addView(text);
+//            courseListLayout.addView(text);
         }
     }
 
@@ -123,37 +133,10 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
 
         for (DataSnapshot course : dataSnapshot.getChildren()) {
             courseName = course.getKey();
-            ArrayList<Section> sections = new ArrayList<>();
 
-            for (DataSnapshot section : course.getChildren()) {
-                if (section.getKey().equals("classlink")) {
-                    courseLink = section.getValue().toString();
-                } else {
-                    courseId = section.child("crn").getValue().toString();
-                    currentSeat = section.child("cur").getValue().toString();
-                    availableSeat = section.child("avail").getValue().toString();
-                    maxSeat = section.child("max").getValue().toString();
-                    waitList = section.child("wtlist").getValue().toString();
-
-                    location = section.child("location").getValue().toString();
-                    sectionType = section.child("section_type").getValue().toString();
-                    sectionCode = section.child("section_code").getValue().toString();
-                    times = section.child("times").getValue().toString();
-                    professorLink = section.child("proflink").getValue().toString();
-                    tutCode = section.child("code").getValue().toString();
-                    professorName = section.child("instructor").getValue().toString();
-
-                    Section singleSection = new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName);
-                    sections.add(singleSection);
-
-//                            result = result + courseName + " - " + location + "- courseID:" + sectionCode + "\n";
-                }
-            }
-
-            courseList.add(new Course(courseName, courseLink, sections));
+            Log.w(TAG,courseName);
         }
 
-        displayCourseList();
     }
 
     @Override
