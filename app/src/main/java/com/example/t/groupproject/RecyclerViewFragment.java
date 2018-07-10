@@ -13,6 +13,6 @@ public class RecyclerViewFragment extends Fragment{
         GRID_LAYOUT_MANAGER,
         LINEAR_LAYOUT_MANAGER
     }
-    
+
 
 }
