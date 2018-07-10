@@ -72,6 +72,48 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
         }
     }
 
+//    @Override
+//    public void onDataChange(DataSnapshot dataSnapshot) {
+//        String courseName, courseLink = "";
+//        String courseId, currentSeat, availableSeat, maxSeat, waitList;
+//        String sectionCode, sectionType, location, times, professorLink, tutCode, professorName;
+//        String result = "";
+//
+//        for (DataSnapshot course : dataSnapshot.getChildren()) {
+//            courseName = course.getKey();
+//            ArrayList<Section> sections = new ArrayList<>();
+//
+//            for (DataSnapshot section : course.getChildren()) {
+//                if (section.getKey().equals("classlink")) {
+//                    courseLink = section.getValue().toString();
+//                } else {
+//                    courseId = section.child("crn").getValue().toString();
+//                    currentSeat = section.child("cur").getValue().toString();
+//                    availableSeat = section.child("avail").getValue().toString();
+//                    maxSeat = section.child("max").getValue().toString();
+//                    waitList = section.child("wtlist").getValue().toString();
+//
+//                    location = section.child("location").getValue().toString();
+//                    sectionType = section.child("section_type").getValue().toString();
+//                    sectionCode = section.child("section_code").getValue().toString();
+//                    times = section.child("times").getValue().toString();
+//                    professorLink = section.child("proflink").getValue().toString();
+//                    tutCode = section.child("code").getValue().toString();
+//                    professorName = section.child("instructor").getValue().toString();
+//
+//                    Section singleSection = new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName);
+//                    sections.add(singleSection);
+//
+////                            result = result + courseName + " - " + location + "- courseID:" + sectionCode + "\n";
+//                }
+//            }
+//
+//            courseList.add(new Course(courseName, courseLink, sections));
+//        }
+//
+//        displayCourseList();
+//    }
+
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
         String courseName, courseLink = "";
