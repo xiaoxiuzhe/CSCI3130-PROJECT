@@ -1,5 +1,6 @@
 package com.example.t.groupproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -32,7 +33,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     @Override
     public void onBindViewHolder(@NonNull final CourseViewHolder holder, int position) {
-        Course course = courseList.get(position);
+        final Course course = courseList.get(position);
 
         String courseName = course.getCourseName().replace("_", " ");
         holder.textViewTitle.setText(courseName);
@@ -40,10 +41,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, "You clicked "+holder.textViewTitle.getText().toString(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mCtx, "You clicked "+holder.textViewTitle.getText().toString(),Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(mCtx, SectionLists.class);
-
+                intent.putExtra("COURSENAME", course.getCourseName());
+                Activity activity = (Activity) mCtx;
+                intent.putExtra("FACULTY", activity.getTitle().toString().replace(" ","_"));
                 mCtx.startActivity(intent);
             }
         });;

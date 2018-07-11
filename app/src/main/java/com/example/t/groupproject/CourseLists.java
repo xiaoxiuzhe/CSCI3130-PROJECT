@@ -26,13 +26,12 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
     private static final String TAG = "CourseLists";
 
     private DatabaseReference database;
-//    private ArrayList<Course> courseList;
     private List<Course> courseList;
     private String faculty;
 
 
-    RecyclerView recyclerView;
-    CourseAdapter adapter;
+    private RecyclerView recyclerView;
+    private CourseAdapter adapter;
 
 
     @Override
@@ -51,14 +50,13 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
         courseList = new ArrayList<Course>();
 
         // retrieve data from Database, then show them on textView
-        database.addValueEventListener(this);
+        database.addListenerForSingleValueEvent(this);
 
 
 
-        //
+        //RecyclerView adapter settings
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -70,79 +68,6 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
     }
 
 
-//    public void displayCourseList() {
-////        LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
-//
-//        for (Course course : courseList) {
-//            TextView text = new TextView(CourseLists.this);
-//            String courseDetail = "";
-//
-//            int tutFee = 0;
-//            for (int i = 0; i < course.getSections().size(); i++) {
-//                tutFee = 0;
-//                if (course.getSections().get(i).getTutCode().equals("T210"))
-//                    tutFee = 500;
-//                if (course.getSections().get(i).getTutCode().equals("T410"))
-//                    tutFee = 600;
-//                if (course.getSections().get(i).getTutCode().equals("T610"))
-//                    tutFee = 700;
-//                if (course.getSections().get(i).getTutCode().equals("T620"))
-//                    tutFee = 720;
-//
-//
-//                courseDetail += "\n\t\t\t" + course.getSections().get(i).getSectionCode() + "\t" +
-//                        course.getSections().get(i).getCourseId() + "\t" +
-//                        course.getSections().get(i).getTimes() + "\t\t" + "$" + tutFee +
-//                        "\t\t" + course.getSections().get(i).getProfessorName() + "\t" +
-//                        "\t\t" + course.getSections().get(i).getProfLink() + "\t";
-//            }
-//
-//            text.setText(course.getCourseName() + courseDetail + "\n");
-//
-//
-////            courseListLayout.addView(text);
-//        }
-//    }
-
-//    @Override
-//    public void onDataChange(DataSnapshot dataSnapshot) {
-//        String courseName, courseLink = "";
-//
-//        for (DataSnapshot course : dataSnapshot.getChildren()) {
-//            courseName = course.getKey();
-//            ArrayList<Section> sections = new ArrayList<>();
-//
-//            for (DataSnapshot section : course.getChildren()) {
-//                if (section.getKey().equals("classlink")) {
-//                    courseLink = section.getValue().toString();
-//                } else {
-//                    courseId = section.child("crn").getValue().toString();
-//                    currentSeat = section.child("cur").getValue().toString();
-//                    availableSeat = section.child("avail").getValue().toString();
-//                    maxSeat = section.child("max").getValue().toString();
-//                    waitList = section.child("wtlist").getValue().toString();
-//
-//                    location = section.child("location").getValue().toString();
-//                    sectionType = section.child("section_type").getValue().toString();
-//                    sectionCode = section.child("section_code").getValue().toString();
-//                    times = section.child("times").getValue().toString();
-//                    professorLink = section.child("proflink").getValue().toString();
-//                    tutCode = section.child("code").getValue().toString();
-//                    professorName = section.child("instructor").getValue().toString();
-//
-//                    Section singleSection = new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName);
-//                    sections.add(singleSection);
-//
-////                            result = result + courseName + " - " + location + "- courseID:" + sectionCode + "\n";
-//                }
-//            }
-//
-//            courseList.add(new Course(courseName, courseLink, sections));
-//        }
-//
-//        displayCourseList();
-//    }
-
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
         String courseName, courseLink = "";
@@ -150,8 +75,6 @@ public class CourseLists extends AppCompatActivity implements ValueEventListener
         for (DataSnapshot course : dataSnapshot.getChildren()) {
             courseName = course.getKey();
             courseLink = course.child("classlink").getValue().toString();
-            Log.w(TAG,courseName);
-            Log.w(TAG,courseLink);
             courseList.add(new Course(courseName,courseLink));
         }
 

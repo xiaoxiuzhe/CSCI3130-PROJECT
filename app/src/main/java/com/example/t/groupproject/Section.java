@@ -1,9 +1,11 @@
 package com.example.t.groupproject;
 
 public class Section {
+
+    private String crn;
     private String sectionCode;
     private String sectionType;
-    private String courseId;
+    private String sectionId;
     private String location;
     private String times;
     private String currentSeat;
@@ -15,14 +17,20 @@ public class Section {
     private String professorName;
     private String billingHours;
     private String billingCode;
+    private String monday;
+    private String tuesday;
+    private String wednesday;
+    private String thursday;
+    private String friday;
 
     public Section() {
     }
 
     public Section(
+            String crn,
             String sectionCode,
             String sectionType,
-            String courseId,
+            String sectionId,
             String location,
             String times,
             String currentSeat,
@@ -33,11 +41,17 @@ public class Section {
             String tutCode,
             String professorName,
             String billingHours,
-            String billingCode
+            String billingCode,
+            String monday,
+            String tuesday,
+            String wednesday,
+            String thursday,
+            String friday
     ) {
+        this.crn = crn;
         this.sectionCode = sectionCode;
         this.sectionType = sectionType;
-        this.courseId = courseId;
+        this.sectionId = sectionId;
         this.location = location;
         this.times = times;
         this.currentSeat = currentSeat;
@@ -49,6 +63,19 @@ public class Section {
         this.professorName = professorName;
         this.billingHours = billingHours;
         this.billingCode = billingCode;
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
+    }
+
+    public String getCrn() {
+        return crn;
+    }
+
+    public void setCrn(String crn) {
+        this.crn = crn;
     }
 
     public String getSectionCode() {
@@ -67,12 +94,12 @@ public class Section {
         this.sectionType = sectionType;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getSectionId() {
+        return sectionId;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getLocation() {
@@ -161,5 +188,45 @@ public class Section {
 
     public void setBillingCode(String billingCode) {
         this.billingCode = billingCode;
+    }
+
+    public String getMonday() {
+        return monday;
+    }
+
+    public void setMonday(String monday) {
+        this.monday = monday;
+    }
+
+    public String getTuesday() {
+        return tuesday;
+    }
+
+    public void setTuesday(String tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public String getWednesday() {
+        return wednesday;
+    }
+
+    public void setWednesday(String wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public String getThursday() {
+        return thursday;
+    }
+
+    public void setThursday(String thursday) {
+        this.thursday = thursday;
+    }
+
+    public String getFriday() {
+        return friday;
+    }
+
+    public void setFriday(String friday) {
+        this.friday = friday;
     }
 }
