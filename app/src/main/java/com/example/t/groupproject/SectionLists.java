@@ -114,6 +114,7 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
                 tuesday = section.child("tu").getValue().toString();
                 wednesday = section.child("we").getValue().toString();
                 thursday = section.child("th").getValue().toString();
+                
                 friday = section.child("fr").getValue().toString();
 
                 sectionList.add(
