@@ -87,7 +87,15 @@
                 android:text="Location: Studley COMPUTER SCIENCE 127" />
 
 
-
+            <ToggleButton
+                android:id="@+id/toggleButtonRegister"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textViewLocation"
+                />
 
         </RelativeLayout>
 

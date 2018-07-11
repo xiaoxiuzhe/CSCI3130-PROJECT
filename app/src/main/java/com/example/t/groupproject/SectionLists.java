@@ -1,11 +1,14 @@
 package com.example.t.groupproject;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,17 +16,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SectionLists extends AppCompatActivity implements ValueEventListener {
     private static final String TAG = "SectionLists";
 
     private String courseName, faculty;
-    private DatabaseReference database;
+    private DatabaseReference sectionDataRef,userInfoDataRef;
     private List<Section> sectionList;
 
     private RecyclerView recyclerView;
-    private CourseAdapter adapter;
+    private SectionAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +41,28 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
         makeLog(courseName + faculty);
 
         setTitle(courseName.replace("_", " "));
-        database = FirebaseDatabase.getInstance().getReference().child(faculty).child(courseName);
+        sectionDataRef = FirebaseDatabase.getInstance().getReference().child(faculty).child(courseName);
 
         sectionList = new ArrayList<Section>();
-        database.addListenerForSingleValueEvent(this);
+        sectionDataRef.addListenerForSingleValueEvent(this);
+
+        // recyclerview for display list of data
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void displaySectionList() {
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Map<String, String> passInfo = new HashMap<>();
+        passInfo.put("courseName",courseName);
+        passInfo.put("faculty",faculty);
+        passInfo.put("userUid",userUid);
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+        // pass parameters
+        adapter = new SectionAdapter(this, sectionList, database, passInfo);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -68,20 +91,22 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
 
         for (DataSnapshot section : dataSnapshot.getChildren()) {
             if (!section.getKey().equals("classlink")) {
-                crn = String.valueOf(section.child("cnr").getValue());
-                sectionCode = section.child("section_code").getValue().toString();
-                sectionType = section.child("section_type").getValue().toString();
-                sectionId = String.valueOf(dataSnapshot.getKey());
-                location = section.child("location").getValue().toString();
-                times = section.child("times").getValue().toString();
+                crn = String.valueOf(section.child("crn").getValue());
+                sectionId = String.valueOf(section.getKey());
                 currentSeat = String.valueOf(section.child("cur").getValue());
                 availableSeat = String.valueOf(section.child("avail").getValue());
                 maxSeat = String.valueOf(section.child("max").getValue());
                 waitList = String.valueOf(section.child("wtlist").getValue());
+                billingHours = String.valueOf(section.child("bhrs").getValue());
+
+                sectionCode = section.child("section_code").getValue().toString();
+                sectionType = section.child("section_type").getValue().toString();
+                location = section.child("location").getValue().toString();
+                times = section.child("times").getValue().toString();
+
                 professorLink = section.child("proflink").getValue().toString();
                 tutCode = section.child("tu").getValue().toString();
                 professorName = section.child("instructor").getValue().toString();
-                billingHours = String.valueOf(section.child("bhrs").getValue());
                 billingCode = section.child("code").getValue().toString();
                 monday = section.child("mo").getValue().toString();
                 tuesday = section.child("tu").getValue().toString();
@@ -115,13 +140,12 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
 
             }
         }
+        displaySectionList();
 
 
     }
 
-    private void displaySectionList() {
 
-    }
 
     @Override
     public void onCancelled(DatabaseError databaseError) {

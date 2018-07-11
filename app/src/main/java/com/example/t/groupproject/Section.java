@@ -1,5 +1,10 @@
 package com.example.t.groupproject;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Section {
 
     private String crn;
@@ -229,4 +234,33 @@ public class Section {
     public void setFriday(String friday) {
         this.friday = friday;
     }
+
+    @Exclude
+    public Map<String,Object> toMap(){
+        HashMap<String, Object> result = new HashMap<>();
+
+        result.put("crn", crn);
+        result.put("section_code", sectionCode);
+        result.put("section_type", sectionType);
+        result.put("section_id",sectionId);
+        result.put("location",location);
+        result.put("times",times);
+        result.put("cur",currentSeat);
+        result.put("avail",availableSeat);
+        result.put("max",maxSeat);
+        result.put("wtlist",waitList);
+        result.put("proflink",professorLink);
+        result.put("tu",tutCode);
+        result.put("instructor",professorName);
+        result.put("bhrs",billingHours);
+        result.put("code",billingCode);
+        result.put("mo",monday);
+        result.put("tu",tuesday);
+        result.put("we",wednesday);
+        result.put("th",thursday);
+        result.put("fr",friday);
+
+        return result;
+    }
+
 }
