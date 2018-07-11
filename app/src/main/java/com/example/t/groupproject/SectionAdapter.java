@@ -97,6 +97,8 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
                     section.setCurrentSeat(String.valueOf(currentSeat));
 
                     Map<String, Object> newSectionValues = section.toMap();
+                    newSectionValues.put("course_name", courseName);
+                    newSectionValues.put("faculty", faculty);
                     Map<String, Object> childUpdates = new HashMap<>();
 
                     childUpdates.put("/UserInfo/" + userUid + "/registered_courses/" + crn, newSectionValues);
@@ -114,6 +116,8 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
                     section.setCurrentSeat(String.valueOf(currentSeat));
 
                     Map<String, Object> newSectionValues = section.toMap();
+                    newSectionValues.put("course_name", courseName);
+                    newSectionValues.put("faculty", faculty);
                     Map<String, Object> childUpdates = new HashMap<>();
 
                     childUpdates.put("/UserInfo/" + userUid + "/registered_courses/" + crn, null);
