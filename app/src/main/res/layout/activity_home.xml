@@ -7,6 +7,21 @@
     tools:context=".Home">
 
     <Button
+        android:id="@+id/addCourse"
+        style="@style/ButtonStyle"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:onClick="onClick"
+        android:text="Add Course"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/infoButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/infoButton"
+        app:layout_constraintTop_toBottomOf="@+id/infoButton" />
+
+    <Button
         android:id="@+id/courseTableButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
@@ -21,6 +36,7 @@
         android:id="@+id/tuitionButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="Tuition"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/scheduleButton"
@@ -33,6 +49,7 @@
         style="@style/ButtonStyle"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="My Class"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/infoButton"
@@ -44,6 +61,7 @@
         android:id="@+id/scheduleButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="24dp"
+        android:onClick="onClick"
         android:text="Schedule"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/myClassButton"
@@ -55,8 +73,9 @@
         android:id="@+id/infoButton"
         style="@style/ButtonStyle"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="28dp"
-        android:text="UserInfo"
+        android:layout_marginTop="24dp"
+        android:onClick="onClick"
+        android:text="User Info"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/logOutButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -66,7 +85,6 @@
     <Button
         android:id="@+id/logOutButton"
         style="@style/ButtonStyle"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
@@ -76,8 +94,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/addCourse"
+        app:layout_constraintVertical_bias="0.152" />
 
     <TextView
         android:id="@+id/homeTitle"

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            >
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentLeft="true"
+                android:text="Lec"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:clickable="true"
+                />
+
+            <TextView
+                android:id="@+id/textViewProfessor"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:text="Professor"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:clickable="true"
+                />
+
+            <TextView
+                android:id="@+id/textViewAvailMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_below="@+id/textViewProfessor"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:text="Available 1/100" />
+
+            <TextView
+                android:id="@+id/textViewWaitList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_below="@+id/textViewAvailMax"
+                android:layout_alignParentRight="true"
+                android:text="WaitList 0" />
+
+            <TextView
+                android:id="@+id/textViewSectionCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/textViewTitle"
+                android:text="Sec:0 CRN:00000" />
+
+            <TextView
+                android:id="@+id/textViewTimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/textViewSectionCode"
+                android:text="00:00-24:00"/>
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/textViewTimes"
+                android:text="Location: Studley COMPUTER SCIENCE 127" />
+
+
+            <ToggleButton
+                android:id="@+id/toggleButtonRegister"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textViewLocation"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

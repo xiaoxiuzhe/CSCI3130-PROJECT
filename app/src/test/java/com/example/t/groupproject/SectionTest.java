@@ -6,13 +6,14 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SectionTest {
-    private String sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName;
+    private String crn,sectionCode, sectionType, sectionId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink, tutCode, professorName,billingHours,billingCode,monday,tuesday,wednesday,thursday,friday;
     Section demo;
     @Before
     public void setUp(){
+        crn="";
         sectionCode="Sec1";
         sectionType="type1";
-        courseId="20296";
+        sectionId="20296";
         location="Room1";
         times="1305-1425";
         currentSeat="69";
@@ -22,7 +23,14 @@ public class SectionTest {
         professorLink="tst";
         tutCode="s";
         professorName="name";
-        demo=new Section(sectionCode, sectionType, courseId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink,tutCode,professorName);
+        billingHours="";
+        billingCode="";
+        monday="";
+        tuesday="";
+        wednesday="";
+        thursday="";
+        friday="";
+        demo=new Section(crn,sectionCode, sectionType, sectionId, location, times, currentSeat, availableSeat, maxSeat, waitList, professorLink,tutCode,professorName,billingHours,billingCode,monday,tuesday,wednesday,thursday,friday);
     }
     @Test
     public void getSectionCode() {
@@ -48,13 +56,13 @@ public class SectionTest {
 
     @Test
     public void getCourseId() {
-        assertEquals(demo.getCourseId(),"20296");
+        assertEquals(demo.getSectionId(),"20296");
     }
 
     @Test
     public void setCourseId() {
-        demo.setCourseId("20297");
-        assertEquals(demo.getCourseId(),"20297");
+        demo.setSectionId("20297");
+        assertEquals(demo.getSectionId(),"20297");
 
     }
 
