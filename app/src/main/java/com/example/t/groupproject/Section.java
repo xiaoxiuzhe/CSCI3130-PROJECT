@@ -13,10 +13,28 @@ public class Section {
     private String professorLink;
     private String tutCode;
     private String professorName;
+    private String billingHours;
+    private String billingCode;
 
+    public Section() {
+    }
 
-
-    public Section(String sectionCode, String sectionType, String courseId, String location, String times, String currentSeat, String availableSeat, String maxSeat, String waitList, String professorLink, String tutCode, String professorName) {
+    public Section(
+            String sectionCode,
+            String sectionType,
+            String courseId,
+            String location,
+            String times,
+            String currentSeat,
+            String availableSeat,
+            String maxSeat,
+            String waitList,
+            String professorLink,
+            String tutCode,
+            String professorName,
+            String billingHours,
+            String billingCode
+    ) {
         this.sectionCode = sectionCode;
         this.sectionType = sectionType;
         this.courseId = courseId;
@@ -29,7 +47,8 @@ public class Section {
         this.professorLink = professorLink;
         this.tutCode = tutCode;
         this.professorName = professorName;
-
+        this.billingHours = billingHours;
+        this.billingCode = billingCode;
     }
 
     public String getSectionCode() {
@@ -104,15 +123,43 @@ public class Section {
         this.waitList = waitList;
     }
 
-    public String getProfLink() {
+    public String getProfessorLink() {
         return professorLink;
+    }
+
+    public void setProfessorLink(String professorLink) {
+        this.professorLink = professorLink;
     }
 
     public String getTutCode() {
         return tutCode;
     }
 
+    public void setTutCode(String tutCode) {
+        this.tutCode = tutCode;
+    }
+
     public String getProfessorName() {
         return professorName;
+    }
+
+    public void setProfessorName(String professorName) {
+        this.professorName = professorName;
+    }
+
+    public String getBillingHours() {
+        return billingHours;
+    }
+
+    public void setBillingHours(String billingHours) {
+        this.billingHours = billingHours;
+    }
+
+    public String getBillingCode() {
+        return billingCode;
+    }
+
+    public void setBillingCode(String billingCode) {
+        this.billingCode = billingCode;
     }
 }

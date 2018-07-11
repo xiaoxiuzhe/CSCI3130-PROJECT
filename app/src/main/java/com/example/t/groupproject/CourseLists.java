@@ -4,10 +4,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -17,13 +20,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CourseLists extends FragmentActivity implements ValueEventListener{
+public class CourseLists extends AppCompatActivity implements ValueEventListener{
     private static final String TAG = "CourseLists";
 
     private DatabaseReference database;
-    private ArrayList<Course> courseList;
+//    private ArrayList<Course> courseList;
+    private List<Course> courseList;
     private String faculty;
+
+
+    RecyclerView recyclerView;
+    CourseAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,59 +45,68 @@ public class CourseLists extends FragmentActivity implements ValueEventListener{
         // Initialize values
         faculty = getIntent().getExtras().getString("FACULTY");
         database = FirebaseDatabase.getInstance().getReference().child(faculty);
-        courseList = new ArrayList<>();
+        setTitle(faculty.replace("_", " "));
+
+
+        courseList = new ArrayList<Course>();
 
         // retrieve data from Database, then show them on textView
         database.addValueEventListener(this);
 
 
-        if(savedInstanceState == null){
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//            RecycLerViewFrageMent
-        }
+
+        //
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+    }
+
+    public void displayCourseList(){
+        adapter = new CourseAdapter(this, courseList);
+        recyclerView.setAdapter(adapter);
     }
 
 
-    public void displayCourseList() {
-//        LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
-
-        for (Course course : courseList) {
-            TextView text = new TextView(CourseLists.this);
-            String courseDetail = "";
-
-            int tutFee = 0;
-            for (int i = 0; i < course.getSections().size(); i++) {
-                tutFee = 0;
-                if (course.getSections().get(i).getTutCode().equals("T210"))
-                    tutFee = 500;
-                if (course.getSections().get(i).getTutCode().equals("T410"))
-                    tutFee = 600;
-                if (course.getSections().get(i).getTutCode().equals("T610"))
-                    tutFee = 700;
-                if (course.getSections().get(i).getTutCode().equals("T620"))
-                    tutFee = 720;
-
-
-                courseDetail += "\n\t\t\t" + course.getSections().get(i).getSectionCode() + "\t" +
-                        course.getSections().get(i).getCourseId() + "\t" +
-                        course.getSections().get(i).getTimes() + "\t\t" + "$" + tutFee +
-                        "\t\t" + course.getSections().get(i).getProfessorName() + "\t" +
-                        "\t\t" + course.getSections().get(i).getProfLink() + "\t";
-            }
-
-            text.setText(course.getCourseName() + courseDetail + "\n");
-
-
-//            courseListLayout.addView(text);
-        }
-    }
+//    public void displayCourseList() {
+////        LinearLayout courseListLayout = (LinearLayout) findViewById(R.id.courseListLayout);
+//
+//        for (Course course : courseList) {
+//            TextView text = new TextView(CourseLists.this);
+//            String courseDetail = "";
+//
+//            int tutFee = 0;
+//            for (int i = 0; i < course.getSections().size(); i++) {
+//                tutFee = 0;
+//                if (course.getSections().get(i).getTutCode().equals("T210"))
+//                    tutFee = 500;
+//                if (course.getSections().get(i).getTutCode().equals("T410"))
+//                    tutFee = 600;
+//                if (course.getSections().get(i).getTutCode().equals("T610"))
+//                    tutFee = 700;
+//                if (course.getSections().get(i).getTutCode().equals("T620"))
+//                    tutFee = 720;
+//
+//
+//                courseDetail += "\n\t\t\t" + course.getSections().get(i).getSectionCode() + "\t" +
+//                        course.getSections().get(i).getCourseId() + "\t" +
+//                        course.getSections().get(i).getTimes() + "\t\t" + "$" + tutFee +
+//                        "\t\t" + course.getSections().get(i).getProfessorName() + "\t" +
+//                        "\t\t" + course.getSections().get(i).getProfLink() + "\t";
+//            }
+//
+//            text.setText(course.getCourseName() + courseDetail + "\n");
+//
+//
+////            courseListLayout.addView(text);
+//        }
+//    }
 
 //    @Override
 //    public void onDataChange(DataSnapshot dataSnapshot) {
 //        String courseName, courseLink = "";
-//        String courseId, currentSeat, availableSeat, maxSeat, waitList;
-//        String sectionCode, sectionType, location, times, professorLink, tutCode, professorName;
-//        String result = "";
 //
 //        for (DataSnapshot course : dataSnapshot.getChildren()) {
 //            courseName = course.getKey();
@@ -127,15 +146,16 @@ public class CourseLists extends FragmentActivity implements ValueEventListener{
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
         String courseName, courseLink = "";
-        String courseId, currentSeat, availableSeat, maxSeat, waitList;
-        String sectionCode, sectionType, location, times, professorLink, tutCode, professorName;
-        String result = "";
 
         for (DataSnapshot course : dataSnapshot.getChildren()) {
             courseName = course.getKey();
-
+            courseLink = course.child("classlink").getValue().toString();
             Log.w(TAG,courseName);
+            Log.w(TAG,courseLink);
+            courseList.add(new Course(courseName,courseLink));
         }
+
+        displayCourseList();
 
     }
 
