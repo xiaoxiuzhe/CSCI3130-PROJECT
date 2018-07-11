@@ -24,7 +24,7 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
     private static final String TAG = "SectionLists";
 
     private String courseName, faculty;
-    private DatabaseReference sectionDataRef,userInfoDataRef;
+    private DatabaseReference sectionDataRef, userInfoDataRef;
     private List<Section> sectionList;
 
     private RecyclerView recyclerView;
@@ -55,9 +55,9 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
     private void displaySectionList() {
         String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Map<String, String> passInfo = new HashMap<>();
-        passInfo.put("courseName",courseName);
-        passInfo.put("faculty",faculty);
-        passInfo.put("userUid",userUid);
+        passInfo.put("courseName", courseName);
+        passInfo.put("faculty", faculty);
+        passInfo.put("userUid", userUid);
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         // pass parameters
@@ -105,7 +105,9 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
                 times = section.child("times").getValue().toString();
 
                 professorLink = section.child("proflink").getValue().toString();
+
                 tutCode = section.child("tu").getValue().toString();
+
                 professorName = section.child("instructor").getValue().toString();
                 billingCode = section.child("code").getValue().toString();
                 monday = section.child("mo").getValue().toString();
@@ -144,7 +146,6 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
 
 
     }
-
 
 
     @Override

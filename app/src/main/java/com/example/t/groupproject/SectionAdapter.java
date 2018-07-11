@@ -61,7 +61,12 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
             waitList = "WaitList " + section.getWaitList();
 
         final String sectionCode = "Sec:" + section.getSectionCode() + " CRN:" + section.getCrn();
-        String times = section.getTimes();
+        String times = section.getMonday()+
+                section.getTuesday()+
+                section.getWednesday()+
+                section.getThursday()+
+                section.getFriday()+
+                " " +section.getTimes();
         String location = "Location: " + section.getLocation();
 
 
