@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class Course {
     private String courseName;
     private String courseLink;
-    private ArrayList<Section> sections;
+//    private ArrayList<Section> sections;
 
-    public Course(String courseName, String courseLink, ArrayList<Section> sections) {
+    public Course(){}
+
+    public Course(String courseName, String courseLink) {
         this.courseName = courseName;
         this.courseLink = courseLink;
-        this.sections = sections;
     }
 
     public String getCourseName() {
@@ -29,11 +30,5 @@ public class Course {
         this.courseLink = courseLink;
     }
 
-    public ArrayList<Section> getSections() {
-        return sections;
-    }
 
-    public void setSections(ArrayList<Section> sections) {
-        this.sections = sections;
-    }
 }

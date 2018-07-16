@@ -3,53 +3,79 @@ package com.example.t.groupproject;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
     private TextView homeTitle;
-    private Button LogOutButton;
+    private Button logOutButton, courseTableButton, infoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // initialize values and components
         mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
 
-        if(mAuth.getCurrentUser() == null){
+        homeTitle = (TextView) findViewById(R.id.homeTitle);
+        logOutButton = (Button) findViewById(R.id.logOutButton);
+        courseTableButton = (Button) findViewById(R.id.courseTableButton);
+        infoButton = (Button) findViewById(R.id.infoButton);
+
+        // initialize button listener
+        logOutButton.setOnClickListener(this);
+        courseTableButton.setOnClickListener(this);
+        infoButton.setOnClickListener(this);
+
+
+        // initialize displayed text
+        if (user == null) {
             finish();
             startActivity(new Intent(getApplicationContext(), Login.class));
         }
 
-        FirebaseUser user = mAuth.getCurrentUser();
-
-        homeTitle = (TextView) findViewById(R.id.homeTitle);
         homeTitle.setText("Welcome " + user.getEmail());
 
-        LogOutButton = (Button) findViewById(R.id.LogOutButton);
-        LogOutButton.setOnClickListener(this);
-
     }
 
 
-    public void courseTableButton(View view) {
-        startActivity(new Intent(Home.this, RegisterClass.class));
-    }
-
+    // course listener for every click
     @Override
     public void onClick(View v) {
-        if(v == LogOutButton){
-            mAuth.signOut();
-            finish();
-            startActivity(new Intent(this, Login.class));
+        switch (v.getId()) {
+            case R.id.logOutButton:
+                mAuth.signOut();
+                finish();
+                startActivity(new Intent(this, Login.class));
+                break;
+            case R.id.courseTableButton:
+                startActivity(new Intent(Home.this, RegisterClass.class));
+                break;
+            case R.id.tuitionButton:
+                startActivity(new Intent(Home.this, Tuition.class));
+                break;
+            case R.id.scheduleButton:
+                startActivity(new Intent(Home.this, Schedule.class));
+                break;
+            case R.id.myClassButton:
+                startActivity(new Intent(Home.this, MyClass.class));
+                break;
+            case R.id.infoButton:
+                startActivity(new Intent(Home.this, UserInfo.class));
+                break;
+            case R.id.addCourse:
+                startActivity(new Intent(Home.this, RegisterCourse.class));
+                break;
         }
     }
 }
