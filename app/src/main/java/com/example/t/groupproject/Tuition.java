@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Tuition extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class Tuition extends AppCompatActivity {
                 for (DataSnapshot course : dataSnapshot.getChildren()) {
                     courses.add(course.child("code").getValue().toString());
                 }
-                if (courses.get(0) != null) {
+                if (courses.size() != 0) {
                     for (int i = 0; i < courses.size(); i++) {
                         String feeCode = courses.get(i);
                         if (feeCode.equals("T210")) {
@@ -72,10 +73,10 @@ public class Tuition extends AppCompatActivity {
                     }
                 }
                 tFee = chFee + csFee + stFee;
-                chinFee.setText(Double.toString(chFee));
-                csciFee.setText(Double.toString(csFee));
-                statFee.setText(Double.toString(stFee));
-                totalFee.setText(Double.toString(tFee));
+                chinFee.setText(new DecimalFormat("##.##").format(chFee));
+                csciFee.setText(new DecimalFormat("##.##").format(csFee));
+                statFee.setText(new DecimalFormat("##.##").format(stFee));
+                totalFee.setText(new DecimalFormat("##.##").format(tFee));
             }
 
             @Override
