@@ -59,12 +59,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         homeTitle.setText("Welcome " + user.getEmail());
 
 
-        String isAdmin = "";
+        // detect if is a admin user
         database.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("admin")){
-                    makeToast("this is admin");
+//                    makeToast("this is admin");
                     courseTableButton.setText("Manage Users");
                     infoButton.setVisibility(View.INVISIBLE);
                     tuitionButton.setVisibility(View.INVISIBLE);
@@ -73,7 +73,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     addCourseButton.setVisibility(View.INVISIBLE);
                 }
                 else{
-                    makeToast("this is not admin");
+//                    makeToast("this is not admin");
                 }
             }
 
@@ -96,7 +96,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.courseTableButton:
                 if(courseTableButton.getText().equals("Manage Users")){
-                    makeToast("Manage user");
+                    makeToast(user.getEmail());
+                    startActivity(new Intent(Home.this, UserLists.class));
                     break;
                 }
                 startActivity(new Intent(Home.this, RegisterClass.class));

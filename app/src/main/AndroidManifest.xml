@@ -36,7 +36,8 @@
         <activity android:name=".Schedule" />
         <activity android:name=".MyClass" />
         <activity android:name=".RegisterCourse" />
-        <activity android:name=".SectionLists"></activity>
+        <activity android:name=".SectionLists" />
+        <activity android:name=".UserLists"></activity>
     </application>
 
 </manifest>
