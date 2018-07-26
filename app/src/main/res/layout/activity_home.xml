@@ -7,7 +7,7 @@
     tools:context=".Home">
 
     <Button
-        android:id="@+id/addCourse"
+        android:id="@+id/addCourseButton"
         style="@style/ButtonStyle"
         android:layout_width="173dp"
         android:layout_height="wrap_content"
