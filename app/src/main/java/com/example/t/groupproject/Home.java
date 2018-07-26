@@ -24,6 +24,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     private FirebaseUser user;
     private TextView homeTitle;
     private Button logOutButton, courseTableButton, infoButton, tuitionButton, scheduleButton, myClassButton, addCourseButton;
+    private Boolean isAdmin = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +66,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("admin")){
-//                    makeToast("this is admin");
-                    courseTableButton.setText("Manage Users");
+                    isAdmin = true;
+                    courseTableButton.setText("Manage Courses");
                     infoButton.setVisibility(View.INVISIBLE);
                     tuitionButton.setVisibility(View.INVISIBLE);
                     scheduleButton.setVisibility(View.INVISIBLE);
@@ -73,10 +75,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     addCourseButton.setVisibility(View.INVISIBLE);
                 }
                 else{
-//                    makeToast("this is not admin");
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -95,11 +95,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(this, Login.class));
                 break;
             case R.id.courseTableButton:
-                if(courseTableButton.getText().equals("Manage Users")){
-                    makeToast(user.getEmail());
-                    startActivity(new Intent(Home.this, UserLists.class));
-                    break;
-                }
+//                if(courseTableButton.getText().equals("Manage Courses")){
+//                    makeToast(user.getEmail());
+//                    startActivity(new Intent(Home.this,ManageCoursesLists.class));
+//                    break;
+//                }
                 startActivity(new Intent(Home.this, RegisterClass.class));
                 break;
             case R.id.tuitionButton:
