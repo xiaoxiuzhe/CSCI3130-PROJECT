@@ -1,6 +1,7 @@
 package com.example.t.groupproject;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +29,7 @@ public class EditCourse extends AppCompatActivity {
     private Button updateButton;
     private DatabaseReference database;
     private Section section;
+    private int sectionInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class EditCourse extends AppCompatActivity {
 
         // Initialize values
         setTitle(courseName.replace("_", " "));
-        final int sectionInt = Integer.parseInt(sectionCode);
+        sectionInt = Integer.parseInt(sectionCode);
         final String sectionString = Integer.toString(sectionInt);
         database = FirebaseDatabase.getInstance().getReference().child(faculty).child(courseName).child(sectionString);
 
@@ -173,37 +177,44 @@ public class EditCourse extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_LONG).show();
-//                section.setAvailableSeat(availableEditText.getText().toString());
                 section.setAvailableSeat(availableEditText.getText().toString());
-                Map<String, Object> map = section.toMap();
-                Log.v("HashMapTest", map.get("avail").toString());
-                Log.v("HashMapTest", map.get("avail").toString());
-
-//                map.put("avail", availableEditText.getText().toString());
-//                map.put("avail", availableEditText.getText().toString());
-//                map.put("max", maxEditText.getText().toString());
-//                map.put("location", locationEditText.getText().toString());
-//                map.put("times", timeEditText.getText().toString());
-                String monday = " ", tuesday = " ", wednesday = " ", thursday = " ", friday = " ";
+                section.setSectionType(sectionTypeEditText.getText().toString());
+                section.setMaxSeat(maxEditText.getText().toString());
+                section.setLocation(locationEditText.getText().toString());
+                section.setTimes(timeEditText.getText().toString());
+                String monday = "", tuesday = "", wednesday = "", thursday = "", friday = "";
                 String days = daysEditText.getText().toString();
 
-//                for (char ch: days.toCharArray()) {
-//                    if(ch=='M') monday = "M";
-//                    else if(ch=='T') tuesday = "T";
-//                    else if(ch=='W') wednesday = "W";
-//                    else if(ch=='R') thursday= "R";
-//                    else if(ch=='F') friday= "F";
-//                }
-//                map.put("mo",monday);
-//                map.put("tu",tuesday);
-//                map.put("we",wednesday);
-//                map.put("th",thursday);
-//                map.put("fr",friday);
+
+                for (char ch: days.toCharArray()) {
+                    if(ch=='M') monday = "M";
+                    else if(ch=='T') tuesday = "T";
+                    else if(ch=='W') wednesday = "W";
+                    else if(ch=='R') thursday= "R";
+                    else if(ch=='F') friday= "F";
+                }
+
+                section.setMonday(monday);
+                section.setTuesday(tuesday);
+                section.setWednesday(wednesday);
+                section.setThursday(thursday);
+                section.setFriday(friday);
+
+                Map<String, Object> map = section.toMap();
 
                 Map<String, Object> childUpdates = new HashMap<>();
 
-                childUpdates.put("/", map);
-                database.updateChildren(childUpdates);
+                database = database.getRoot();
+                childUpdates.put("/" + faculty + "/" + courseName + "/" + sectionInt , map);
+                database.updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                            Toast.makeText(getApplicationContext(),"Update Successfully", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(getApplicationContext(),"Error happed", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }
