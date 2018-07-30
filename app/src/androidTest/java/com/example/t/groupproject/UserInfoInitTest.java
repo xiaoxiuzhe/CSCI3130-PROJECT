@@ -1,28 +1,24 @@
 package com.example.t.groupproject;
-import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
-import org.junit.Ignore;
+
+import com.example.t.groupproject.View.Login;
+import com.example.t.groupproject.View.UserInfoInit;
+
 import org.junit.Rule;
 import org.junit.Test;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.*;
 
 public class UserInfoInitTest {
     @Rule
-    public ActivityTestRule<Login> mLoginActivityRule = new ActivityTestRule(UserInfoInit .class);
+    public ActivityTestRule<Login> mLoginActivityRule = new ActivityTestRule(UserInfoInit.class);
 
     @Test
     public void testifyName() throws InterruptedException {

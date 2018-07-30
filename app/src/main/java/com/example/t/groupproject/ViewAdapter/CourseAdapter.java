@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.ViewAdapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,10 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.t.groupproject.Model.Course;
+import com.example.t.groupproject.R;
+import com.example.t.groupproject.View.SectionLists;
 
 import java.util.List;
 
+/**
+ * RecyclerView Adapter that binds data and interations with a list of course
+ */
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder>{
 
     private Context mCtx;

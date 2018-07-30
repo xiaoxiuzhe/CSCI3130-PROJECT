@@ -1,6 +1,7 @@
-package com.example.t.groupproject;
-
-import java.util.ArrayList;
+package com.example.t.groupproject.Model;
+/**
+ * Class that defines the Course
+ */
 
 public class Course {
     private String courseName;

@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.t.groupproject.R;
+
+/**
+ * View that user can select Semester and Course Department
+ */
 public class RegisterClass extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner termSelect;
     private Spinner programSelect;

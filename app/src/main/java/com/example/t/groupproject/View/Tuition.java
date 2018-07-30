@@ -1,9 +1,10 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.t.groupproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -15,6 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * View that calculates the total tuition and display it
+ */
 public class Tuition extends AppCompatActivity {
 
     static final double Chin_Billing_Hours = 254.62;
