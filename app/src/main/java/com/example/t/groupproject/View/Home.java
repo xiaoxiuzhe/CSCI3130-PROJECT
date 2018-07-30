@@ -26,7 +26,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference database;
     private FirebaseUser user;
     private TextView homeTitle;
-    private Button logOutButton, courseTableButton, infoButton, tuitionButton, scheduleButton, myClassButton, addCourseButton;
+    private Button logOutButton, courseTableButton, infoButton, tuitionButton, myClassButton, addCourseButton;
     private Boolean isAdmin = false;
 
 
@@ -45,7 +45,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         courseTableButton = (Button) findViewById(R.id.courseTableButton);
         infoButton = (Button) findViewById(R.id.infoButton);
         tuitionButton = (Button) findViewById(R.id.tuitionButton);
-        scheduleButton = (Button) findViewById(R.id.scheduleButton);
         myClassButton = (Button) findViewById(R.id.myClassButton);
         addCourseButton = (Button) findViewById(R.id.addCourseButton);
 
@@ -73,7 +72,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     courseTableButton.setText("Manage Courses");
                     infoButton.setVisibility(View.INVISIBLE);
                     tuitionButton.setVisibility(View.INVISIBLE);
-                    scheduleButton.setVisibility(View.INVISIBLE);
                     myClassButton.setVisibility(View.INVISIBLE);
                     addCourseButton.setVisibility(View.INVISIBLE);
                 }
@@ -108,16 +106,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             case R.id.tuitionButton:
                 startActivity(new Intent(Home.this, Tuition.class));
                 break;
-            case R.id.scheduleButton:
-                startActivity(new Intent(Home.this, Tuition.class));
-                break;
             case R.id.myClassButton:
                 startActivity(new Intent(Home.this, MyClass.class));
                 break;
             case R.id.infoButton:
                 startActivity(new Intent(Home.this, UserInfo.class));
                 break;
-            case R.id.addCourse:
+            case R.id.addCourseButton:
                 startActivity(new Intent(Home.this, RegisterCourse.class));
                 break;
         }

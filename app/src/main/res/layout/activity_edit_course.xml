@@ -169,6 +169,7 @@
         app:layout_constraintStart_toStartOf="@+id/sectionTypeEditText" />
 
     <Button
+        style="@style/ButtonStyle"
         android:id="@+id/updateButton"
         android:layout_width="87dp"
         android:layout_height="wrap_content"
