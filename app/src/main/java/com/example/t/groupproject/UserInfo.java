@@ -42,6 +42,12 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        // initialize displayed text
+        if (user == null) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Login.class));
+        }
+
         // Spinner element
         Major = (Spinner) findViewById(R.id.Major);
 
