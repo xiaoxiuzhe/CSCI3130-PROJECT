@@ -42,9 +42,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         courseTableButton = (Button) findViewById(R.id.courseTableButton);
         infoButton = (Button) findViewById(R.id.infoButton);
         tuitionButton = (Button) findViewById(R.id.tuitionButton);
-        scheduleButton = (Button) findViewById(R.id.scheduleButton);
         myClassButton = (Button) findViewById(R.id.myClassButton);
-        addCourseButton = (Button) findViewById(R.id.addCourseButton);
 
         // initialize button listener
         logOutButton.setOnClickListener(this);
@@ -105,17 +103,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             case R.id.tuitionButton:
                 startActivity(new Intent(Home.this, Tuition.class));
                 break;
-            case R.id.scheduleButton:
-                startActivity(new Intent(Home.this, Tuition.class));
-                break;
             case R.id.myClassButton:
                 startActivity(new Intent(Home.this, MyClass.class));
                 break;
             case R.id.infoButton:
                 startActivity(new Intent(Home.this, UserInfo.class));
-                break;
-            case R.id.addCourse:
-                startActivity(new Intent(Home.this, RegisterCourse.class));
                 break;
         }
     }
