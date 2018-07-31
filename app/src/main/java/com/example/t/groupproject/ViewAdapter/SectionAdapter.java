@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.ViewAdapter;
 
 
 import android.content.Context;
@@ -10,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.t.groupproject.View.EditCourse;
+import com.example.t.groupproject.R;
+import com.example.t.groupproject.Model.Section;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,8 +25,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.support.v4.content.ContextCompat.startActivity;
-
+/**
+ * RecyclerView Adapter that binding data and interations with a list of section
+ */
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionViewHolder> {
     private Context mCtx;
     private List<Section> sectionList;

@@ -4,6 +4,8 @@ import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 
+import com.example.t.groupproject.View.SignUp;
+
 import org.junit.Rule;
 import org.junit.Test;
 

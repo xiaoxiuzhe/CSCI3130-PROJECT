@@ -1,16 +1,17 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.t.groupproject.Model.Section;
+import com.example.t.groupproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * View that admin can edit a course information
+ */
 public class EditCourse extends AppCompatActivity {
     private String faculty, courseName, userUid, sectionCode;
     private TextView sectionTextView, crnTextView;

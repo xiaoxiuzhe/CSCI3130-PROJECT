@@ -1,5 +1,8 @@
 package com.example.t.groupproject;
 
+import com.example.t.groupproject.Model.Course;
+import com.example.t.groupproject.Model.Section;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -3,6 +3,8 @@ package com.example.t.groupproject;
 import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 
+import com.example.t.groupproject.View.Login;
+
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;

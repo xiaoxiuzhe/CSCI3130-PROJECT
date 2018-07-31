@@ -1,10 +1,14 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.Model;
 
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Section object, this object will store a Section attributes
+ * and can be converted to JSON format
+ */
 public class Section {
 
     private String crn;

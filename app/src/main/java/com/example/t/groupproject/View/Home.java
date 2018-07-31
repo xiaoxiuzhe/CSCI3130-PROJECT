@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.t.groupproject.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,13 +17,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Main View
+ */
 public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private DatabaseReference database;
     private FirebaseUser user;
     private TextView homeTitle;
-    private Button logOutButton, courseTableButton, infoButton, tuitionButton, scheduleButton, myClassButton, addCourseButton;
+    private Button logOutButton, courseTableButton, infoButton, tuitionButton, myClassButton;
     private Boolean isAdmin = false;
 
 
@@ -42,9 +45,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         courseTableButton = (Button) findViewById(R.id.courseTableButton);
         infoButton = (Button) findViewById(R.id.infoButton);
         tuitionButton = (Button) findViewById(R.id.tuitionButton);
-        scheduleButton = (Button) findViewById(R.id.scheduleButton);
         myClassButton = (Button) findViewById(R.id.myClassButton);
-        addCourseButton = (Button) findViewById(R.id.addCourseButton);
 
         // initialize button listener
         logOutButton.setOnClickListener(this);
@@ -70,9 +71,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     courseTableButton.setText("Manage Courses");
                     infoButton.setVisibility(View.INVISIBLE);
                     tuitionButton.setVisibility(View.INVISIBLE);
-                    scheduleButton.setVisibility(View.INVISIBLE);
                     myClassButton.setVisibility(View.INVISIBLE);
-                    addCourseButton.setVisibility(View.INVISIBLE);
                 }
                 else{
                 }
@@ -105,17 +104,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
             case R.id.tuitionButton:
                 startActivity(new Intent(Home.this, Tuition.class));
                 break;
-            case R.id.scheduleButton:
-                startActivity(new Intent(Home.this, Tuition.class));
-                break;
             case R.id.myClassButton:
                 startActivity(new Intent(Home.this, MyClass.class));
                 break;
             case R.id.infoButton:
                 startActivity(new Intent(Home.this, UserInfo.class));
-                break;
-            case R.id.addCourse:
-                startActivity(new Intent(Home.this, RegisterCourse.class));
                 break;
         }
     }

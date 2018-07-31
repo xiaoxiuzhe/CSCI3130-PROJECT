@@ -4,22 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
-
-    <Button
-        android:id="@+id/addCourseButton"
-        style="@style/ButtonStyle"
-        android:layout_width="173dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:onClick="onClick"
-        android:text="Add Course"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/infoButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/infoButton"
-        app:layout_constraintTop_toBottomOf="@+id/infoButton" />
+    tools:context=".View.Home">
 
     <Button
         android:id="@+id/courseTableButton"
@@ -39,9 +24,8 @@
         android:onClick="onClick"
         android:text="Tuition"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/scheduleButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/scheduleButton"
+        app:layout_constraintEnd_toEndOf="@+id/myClassButton"
+        app:layout_constraintStart_toStartOf="@+id/myClassButton"
         app:layout_constraintTop_toBottomOf="@+id/courseTableButton" />
 
     <Button
@@ -55,18 +39,6 @@
         app:layout_constraintEnd_toEndOf="@+id/infoButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/infoButton"
-        app:layout_constraintTop_toBottomOf="@+id/scheduleButton" />
-
-    <Button
-        android:id="@+id/scheduleButton"
-        style="@style/ButtonStyle"
-        android:layout_marginTop="24dp"
-        android:onClick="onClick"
-        android:text="Schedule"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/myClassButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/myClassButton"
         app:layout_constraintTop_toBottomOf="@+id/tuitionButton" />
 
     <Button
@@ -78,13 +50,13 @@
         android:text="User Info"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/logOutButton"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/logOutButton"
         app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
 
     <Button
         android:id="@+id/logOutButton"
         style="@style/ButtonStyle"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
@@ -94,8 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourse"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintTop_toBottomOf="@+id/infoButton" />
 
     <TextView
         android:id="@+id/homeTitle"

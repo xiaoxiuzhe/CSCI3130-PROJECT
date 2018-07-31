@@ -1,9 +1,12 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.t.groupproject.Model.Course;
+import com.example.t.groupproject.R;
+import com.example.t.groupproject.ViewAdapter.CourseAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,6 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View that display a list of course
+ */
 public class CourseLists extends AppCompatActivity implements ValueEventListener{
     private static final String TAG = "CourseLists";
 

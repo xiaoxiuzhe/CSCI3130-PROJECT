@@ -1,5 +1,8 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.Model;
 
+/**
+ * User object
+ */
 public class User {
     private String uid;
     private String email;

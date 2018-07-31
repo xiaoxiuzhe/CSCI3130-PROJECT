@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditCourse">
+    tools:context=".View.EditCourse">
 
     <TextView
         android:id="@+id/availableTextView"
@@ -169,6 +169,7 @@
         app:layout_constraintStart_toStartOf="@+id/sectionTypeEditText" />
 
     <Button
+        style="@style/ButtonStyle"
         android:id="@+id/updateButton"
         android:layout_width="87dp"
         android:layout_height="wrap_content"
