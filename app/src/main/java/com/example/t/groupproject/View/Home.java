@@ -26,7 +26,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     private DatabaseReference database;
     private FirebaseUser user;
     private TextView homeTitle;
-    private Button logOutButton, courseTableButton, infoButton, tuitionButton, myClassButton, addCourseButton;
+    private Button logOutButton, courseTableButton, infoButton, tuitionButton, myClassButton;
     private Boolean isAdmin = false;
 
 
@@ -46,7 +46,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         infoButton = (Button) findViewById(R.id.infoButton);
         tuitionButton = (Button) findViewById(R.id.tuitionButton);
         myClassButton = (Button) findViewById(R.id.myClassButton);
-        addCourseButton = (Button) findViewById(R.id.addCourseButton);
 
         // initialize button listener
         logOutButton.setOnClickListener(this);
@@ -73,7 +72,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                     infoButton.setVisibility(View.INVISIBLE);
                     tuitionButton.setVisibility(View.INVISIBLE);
                     myClassButton.setVisibility(View.INVISIBLE);
-                    addCourseButton.setVisibility(View.INVISIBLE);
                 }
                 else{
                 }
@@ -111,9 +109,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.infoButton:
                 startActivity(new Intent(Home.this, UserInfo.class));
-                break;
-            case R.id.addCourseButton:
-                startActivity(new Intent(Home.this, RegisterCourse.class));
                 break;
         }
     }

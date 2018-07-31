@@ -7,21 +7,6 @@
     tools:context=".View.Home">
 
     <Button
-        android:id="@+id/addCourseButton"
-        style="@style/ButtonStyle"
-        android:layout_width="173dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="24dp"
-        android:onClick="onClick"
-        android:text="Add Course"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/logOutButton"
-        app:layout_constraintTop_toBottomOf="@+id/infoButton" />
-
-    <Button
         android:id="@+id/courseTableButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
@@ -64,23 +49,24 @@
         android:onClick="onClick"
         android:text="User Info"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/addCourseButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/addCourseButton"
+        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
+        app:layout_constraintStart_toStartOf="@+id/logOutButton"
         app:layout_constraintTop_toBottomOf="@+id/myClassButton" />
 
     <Button
         android:id="@+id/logOutButton"
         style="@style/ButtonStyle"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="Log out"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_light"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseButton" />
+        app:layout_constraintTop_toBottomOf="@+id/infoButton" />
 
     <TextView
         android:id="@+id/homeTitle"
