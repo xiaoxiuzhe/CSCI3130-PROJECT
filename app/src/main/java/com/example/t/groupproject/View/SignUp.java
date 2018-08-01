@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * View of sign up page
@@ -26,6 +28,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private EditText EmailField, passwordField;
     private TextView textViewLogin;
     private Button registerButton;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 if (mAuth.getCurrentUser() != null) {
+
+                                    //init userinfo right after register
+                                    database = FirebaseDatabase.getInstance().getReference("UserInfo");
+                                    String personID = mAuth.getCurrentUser().getUid();
+                                    Contact userinfo = new Contact(personID, "", "", "", "Chinese");
+                                    database.child(personID).setValue(userinfo);
+
                                     //user is logged in, go to UserInfoInit
                                     startActivity(new Intent(getApplicationContext(), UserInfoInit.class));
                                     Toast.makeText(SignUp.this, "Register successfully", Toast.LENGTH_SHORT).show();
