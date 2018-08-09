@@ -1,18 +1,21 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.ViewAdapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.t.groupproject.View.EditCourse;
+import com.example.t.groupproject.R;
+import com.example.t.groupproject.Model.Section;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,11 +25,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * RecyclerView Adapter that binding data and interations with a list of section
+ */
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionViewHolder> {
     private Context mCtx;
     private List<Section> sectionList;
     private DatabaseReference database;
     private String courseName, faculty, userUid;
+    private Boolean isAdmin = false;
 
 
     public SectionAdapter(Context mCtx, List<Section> sectionList, DatabaseReference database, Map<String, String> passInfo) {
@@ -151,7 +158,39 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
                     }
                 });
 
+        // detect if is a admin user
+        database.child("UserInfo").child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild("admin")){
+                    isAdmin = true;
+                    holder.toggleButtonRegister.setVisibility(View.INVISIBLE);
+                    holder.editButton.setVisibility(View.VISIBLE);
 
+                }
+                else{
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //edit button event listener
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("faculty", faculty);
+                hashMap.put("courseName", courseName);
+                hashMap.put("sectionCode", section.getSectionId());
+                hashMap.put("userUid", userUid);
+                Intent intent = new Intent(mCtx, EditCourse.class);
+                intent.putExtra("map", hashMap);
+                mCtx.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -168,6 +207,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
         TextView textViewTimes;
         TextView textViewLocation;
         ToggleButton toggleButtonRegister;
+        Button editButton;
 
 
         public SectionViewHolder(View itemView) {
@@ -181,6 +221,8 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
             textViewTimes = itemView.findViewById(R.id.textViewTimes);
             textViewLocation = itemView.findViewById(R.id.textViewLocation);
             toggleButtonRegister = itemView.findViewById(R.id.toggleButtonRegister);
+            editButton = itemView.findViewById(R.id.editButton);
+
         }
     }
 }

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity android:name=".View.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,24 +19,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterClass"
+            android:name=".View.RegisterClass"
             android:label="Register Class"
-            android:parentActivityName=".Home" />
+            android:parentActivityName=".View.Home" />
         <activity
-            android:name=".SignUp"
+            android:name=".View.SignUp"
             android:label="Sign Up"
-            android:parentActivityName=".Login" />
-        <activity android:name=".Home" />
+            android:parentActivityName=".View.Login" />
+        <activity android:name=".View.Home" />
         <activity
-            android:name=".CourseLists"
-            android:parentActivityName=".RegisterClass" />
-        <activity android:name=".UserInfoInit" />
-        <activity android:name=".UserInfo" />
-        <activity android:name=".Tuition" />
-        <activity android:name=".Schedule" />
-        <activity android:name=".MyClass" />
-        <activity android:name=".RegisterCourse" />
-        <activity android:name=".SectionLists"></activity>
+            android:name=".View.CourseLists"
+            android:parentActivityName=".View.RegisterClass" />
+        <activity android:name=".View.UserInfoInit" />
+        <activity android:name=".View.UserInfo" />
+        <activity android:name=".View.Tuition" />
+        <activity android:name=".View.Schedule" />
+        <activity android:name=".View.MyClass" />
+        <activity android:name=".View.RegisterCourse" />
+        <activity android:name=".View.SectionLists" />
+        <activity android:name=".View.EditCourse"></activity>
     </application>
 
 </manifest>

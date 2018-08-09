@@ -1,6 +1,5 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.t.groupproject.Model.Section;
+import com.example.t.groupproject.R;
+import com.example.t.groupproject.ViewAdapter.SectionAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,6 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * View that display a list of section by course name
+ */
 public class SectionLists extends AppCompatActivity implements ValueEventListener {
     private static final String TAG = "SectionLists";
 
@@ -153,6 +158,7 @@ public class SectionLists extends AppCompatActivity implements ValueEventListene
     public void onCancelled(DatabaseError databaseError) {
 
     }
+
 
     public void makeToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT);

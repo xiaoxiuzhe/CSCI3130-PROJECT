@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.t.groupproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View that pops up after user finished registration
+ */
 public class UserInfoInit extends AppCompatActivity implements View.OnClickListener{
 
     private Spinner Major;

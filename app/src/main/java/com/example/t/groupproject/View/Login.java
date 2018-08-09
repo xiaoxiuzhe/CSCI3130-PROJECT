@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,11 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.t.groupproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * View of login page
+ */
 public class Login extends AppCompatActivity implements View.OnClickListener, OnCompleteListener<AuthResult> {
 
     private FirebaseAuth mAuth;

@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.t.groupproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View that a user can edit his/her profile
+ */
 public class UserInfo extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -41,6 +44,12 @@ public class UserInfo extends AppCompatActivity implements View.OnClickListener 
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+
+        // initialize displayed text
+        if (user == null) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Login.class));
+        }
 
         // Spinner element
         Major = (Spinner) findViewById(R.id.Major);

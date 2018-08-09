@@ -1,4 +1,4 @@
-package com.example.t.groupproject;
+package com.example.t.groupproject.View;
 
 import com.google.firebase.database.Exclude;
 
@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class that defines how the data will be stored in the
- * Firebase databse. This is converted to a JSON format
+ * Not finished yet
  */
 
 public class Contact implements Serializable {
